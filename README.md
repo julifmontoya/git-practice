@@ -85,14 +85,22 @@ git merge origin/development  # Manually merge the remote changes into local
 ```
 
 #### 14. To pull everything (in simple terms):
-# Step 1: Download latest data from all remotes (but don’t merge)
-git fetch --all    
-# Step 2: Switch to the branch you want to update
-git checkout branch-name 
-# Step 3: Merge the latest changes into your branch
-git pull
+Step 1: Download latest data from all remotes (but don’t merge)
+```
+git fetch --all 
+```
 
-#### 15.1 Undo last commit but keep all changes staged (ready to commit again)
+Step 2: Switch to the branch you want to update
+```
+git checkout branch-name 
+```
+
+Step 3: Merge the latest changes into your branch
+```
+git pull
+```
+
+#### 15.1 git reset --soft
 You want to change the last commit message.
 You forgot to add something before committing.
 ```
@@ -154,33 +162,45 @@ When approved, click "Merge Pull Request"
 
 #### 17. Simple Merge Conflict Exercise
 📦 1. Create a test folder
+```
 mkdir git-conflict-demo
 echo Hello World > README.md
 git add README.md
 git commit -m "Initial commit"
+```
 
 🌿 2. Create branch-a and make a change
+```
 git checkout -b branch-a
 echo This is branch A >> README.md
 git add README.md
 git commit -m "Update from branch A"
+```
 
 🏠 3. Go back to master and create a conflicting change
+```
 git checkout master
 echo This is MASTER branch >> README.md
 git add README.md
 git commit -m "Update from master"
+```
 
 🔥 4. Merge branch-a into main (conflict happens!)
+```
 Auto-merging README.md
 CONFLICT (content): Merge conflict in README.md
 Automatic merge failed; fix conflicts and then commit the result.
+```
 
 🛠 5. Open README.md and manually fix the conflict
+```
 Hello World
 This is MAIN branch
 This is branch A
+```
 
 📥 6. Stage and commit the resolved file
+```
 git add README.md
 git commit -m "Merge branch-a into main and resolve conflict"
+```
