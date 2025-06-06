@@ -3,6 +3,3 @@
 1. Hello Git
 2. Hello Githhhhhhh
 3. Hello Iam happy
-4. sapito
-5. Tigresito
-6. papo luca
