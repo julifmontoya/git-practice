@@ -2,27 +2,29 @@
 
 This tutorial explains the basic Git commands to help you create a repository, track changes, and view commit history.
 
-1. Initialize a Git repository
+#### 1. Initialize a Git repository
 ```
 git init
+git config user.name ""
+git config user.email ""
 ```
 
-2. Add all files to the staging area
+#### 2. Add all files to the staging area
 ```
 git add .
 ```
 
-3. Commit the changes
-COmits should be in Imperative
-If aplied to the codebase this commit will
-Upgrade the packages
-Fix thread allocation
-Improve mobile responsiveness
+#### 3. Commit the changes
+ Written in imperative mood: Think of it as: "If applied, this commit will do what?"
+
+✅ Upgrade packages
+✅ Fix thread allocation
+✅ Improve mobile responsiveness
 ```
-git commit -m "newApp"
+git commit -m "Initialize project with basic setup"
 ```
 
-4. Connect to a remote repository (like GitHub)
+#### 4. Connect to a remote repository (like GitHub)
 ```
 git remote add origin https://github.com/your-username/your-repo.git
 ```
