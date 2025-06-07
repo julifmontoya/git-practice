@@ -15,7 +15,8 @@ Commit should written in imperative mood: Think of it as: "If applied, this comm
 - Fix thread allocation
 - Improve mobile responsiveness
 ```
-git add .
+git add . # to stage everything
+git add filename
 git commit -m "Initialize project with basic setup"
 ```
 
