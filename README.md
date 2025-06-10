@@ -15,7 +15,8 @@ Commit should written in imperative mood: Think of it as: "If applied, this comm
 - Fix thread allocation
 - Improve mobile responsiveness
 ```
-git add .
+git add . # to stage everything
+git add filename
 git commit -m "Initialize project with basic setup"
 ```
 
@@ -98,7 +99,12 @@ git reset --soft HEAD~1
 git reset --hard HEAD~1
 ```
 
-## 15. Feature Branch Workflow and Pull Request
+## 15. Git revert (Practice)
+
+
+
+
+## 16. Feature Branch Workflow and Pull Request
 ### Step 1: Create and switch to your feature branch
 ```
 git checkout -b feature-branch
@@ -129,10 +135,12 @@ A short description of the changes
 
 ### Step 6: After merge, delete your branch locally
 ```
+git checkout development
+git pull origin development
 git branch -d feature-branch
 ```
 
-## 16. Merge Conflict Demo (Optional Practice)
+## 17. Merge Conflict Demo (Practice)
 ### Step 1
 ```
 mkdir git-conflict-demo
