@@ -39,70 +39,64 @@ git log
 ```
 Press q to exit the log viewer
 
-## 6. View a Previous Commit (Read-Only / Detached HEAD
-```
-git checkout <commit-hash>
-```
-❗ Avoid committing while in detached HEAD. Create a new branch if needed.
-
-##  7. Create and Switch to a New Branch
+##  6. Create and Switch to a New Branch
 ✅ Shortcut: creates and switches at once.
 ```
 git checkout -b feature-branch
 ```
 
-## 8. Create a Branch (but stay on current one)
+## 7. Create a Branch (but stay on current one)
 ```
 git branch feature-branch
 ```
 
-## 9. Switch to an Existing Branch
+## 8. Switch to an Existing Branch
 ```
 git checkout feature-branch
 ```
 
-## 10. Push a Feature Branch to Remote
+## 9. Push a Feature Branch to Remote
 ```
 git push -u origin feature-branch
 ```
 
-## 11. Pull Remote Changes Into Local
+## 10. Pull Remote Changes Into Local
 🧠 This is fetch + merge. It updates your working branch immediately.
 ```
 git pull
 ```
 
-## 12. Fetch Remote Changes Without Merging
+## 11. Fetch Remote Changes Without Merging
 ```
 git fetch
 git checkout development
 git merge origin/development
 ```
 
-## 13. Pull All Remotes and Branches (Manual Merge)
+## 12. Pull All Remotes and Branches (Manual Merge)
 ```
 git fetch --all
 git checkout branch-name
 git pull
 ```
 
-## 14. Reset (Uncommit or Undo)
-### 14.1 Undo last commit but keep changes unstaged
+## 13. Reset (Uncommit or Undo)
+### 13.1 Undo last commit but keep changes unstaged
 ```
 git reset HEAD~1
 ```
 
-### 14.2 Undo commit but keep changes staged
+### 13.2 Undo commit but keep changes staged
 ```
 git reset --soft HEAD~1
 ```
 
-### 14.3 Delete commit and discard changes (⚠️ irreversible)
+### 13.3 Delete commit and discard changes (⚠️ irreversible)
 ```
 git reset --hard HEAD~1
 ```
 
-## 15. Git revert (Practice)
+## 14. Git revert (Practice)
 You have:
 C3 -- Commit 3
 C2 -- Commit 2 ← ❌ you want to revert this one
@@ -129,7 +123,7 @@ git revert 4e1f933
 git push
 ```
 
-## 16. Feature Branch Workflow and Pull Request
+## 15. Feature Branch Workflow and Pull Request
 ### Step 1: Create and switch to your feature branch
 ```
 git checkout -b feature-branch
@@ -165,7 +159,7 @@ git pull origin development
 git branch -d feature-branch
 ```
 
-## 17. Merge Conflict Demo (Practice)
+## 16. Merge Conflict Demo (Practice)
 ### Step 1
 ```
 mkdir git-conflict-demo
