@@ -1,7 +1,10 @@
 # Git Tutorial: Step-by-Step Guide
 This tutorial explains the basic Git commands to help you create a repository, track changes, and view commit history.
 
-## 1. Initialize a Git repository
+## 1. Initialize a Git 
+✅ To check if the Git user is correctly configured in your current folder
+git config user.name
+git config user.email
 ```
 git init
 git config user.name ""
@@ -100,9 +103,31 @@ git reset --hard HEAD~1
 ```
 
 ## 15. Git revert (Practice)
+You have:
+C3 -- Commit 3
+C2 -- Commit 2 ← ❌ you want to revert this one
+C1 -- Commit 1
 
+### 1. Find the commit hash of Commit 2:
+```
+git log --oneline
+```
 
+```
+a1b2c3d Commit 3
+4e1f933 Commit 2
+x7y8z9a Commit 1
+```
 
+### 2. Revert only Commit 2:
+```
+git revert 4e1f933
+```
+
+### 3. Push the new "revert" commit to remote:
+```
+git push
+```
 
 ## 16. Feature Branch Workflow and Pull Request
 ### Step 1: Create and switch to your feature branch
