@@ -48,7 +48,7 @@ git checkout <commit-hash>
 ##  7. Create and Switch to a New Branch
 ✅ Shortcut: creates and switches at once.
 ```
-git checkout -b development
+git checkout -b feature-branch
 ```
 
 ## 8. Create a Branch (but stay on current one)
