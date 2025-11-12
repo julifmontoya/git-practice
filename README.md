@@ -1,7 +1,8 @@
 # Git Tutorial: Step-by-Step Guide
-This tutorial explains the basic Git commands to help you create a repository, track changes, and view commit history.
+This guide walks you through essential Git commands to manage versions, collaborate in teams, and handle common issues like merges and conflicts.
+Each step includes the commands, short explanations, and good commit practices.
 
-## 1. Initialize a Git 
+## 1. Initialize a Git Repository
 ✅ To check if the Git user is correctly configured in your current folder
 git config user.name
 git config user.email
@@ -67,36 +68,51 @@ git pull
 ```
 
 ## 11. Fetch Remote Changes Without Merging
+Use this when you want to see remote updates but not merge yet.
 ```
+# Step 1: Download (fetch) remote changes, don’t modify your local files
 git fetch
 git checkout development
 git merge origin/development
 ```
 
 ## 12. Pull All Remotes and Branches (Manual Merge)
+Use this when you want to update everything, not just one branch.
 ```
+# Fetch updates for all remotes and branches
 git fetch --all
 git checkout branch-name
 git pull
 ```
 
-## 13. Reset (Uncommit or Undo)
-### 13.1 Undo last commit but keep changes unstaged
+## 13. Sync Development with Remote (Safe & Common Way)
+This is the most typical workflow to keep your development branch up-to-date with remote changes:
+```
+# switch to your local dev branch
+git checkout development
+# get latest updates from remote
+git fetch origin
+# fetch + merge changes into local dev
+git pull origin development
+```
+
+## 14. Reset (Uncommit or Undo)
+### 14.1 Undo last commit but keep changes unstaged
 ```
 git reset HEAD~1
 ```
 
-### 13.2 Undo commit but keep changes staged
+### 14.2 Undo commit but keep changes staged
 ```
 git reset --soft HEAD~1
 ```
 
-### 13.3 Delete commit and discard changes (⚠️ irreversible)
+### 14.3 Delete commit and discard changes (⚠️ irreversible)
 ```
 git reset --hard HEAD~1
 ```
 
-## 14. Git revert (Practice)
+## 15. Git revert (Practice)
 You have:
 C3 -- Commit 3
 C2 -- Commit 2 ← ❌ you want to revert this one
@@ -123,7 +139,7 @@ git revert 4e1f933
 git push
 ```
 
-## 15. Feature Branch Workflow and Pull Request
+## 16. Feature Branch Workflow and Pull Request
 ### Step 1: Create and switch to your feature branch
 ```
 git checkout -b feature-branch
@@ -159,41 +175,97 @@ git pull origin development
 git branch -d feature-branch
 ```
 
-## 16. Merge Conflict Demo (Practice)
-### Step 1
+## 17. Merge Conflict Demo (Practice)
+### Create a demo repo and initial commit
 ```
 mkdir git-conflict-demo
 cd git-conflict-demo
 git init
 echo "Hello World" > README.md
-git add .
+git add README.md
 git commit -m "Initial commit"
 ```
 
-### Step 2
+### Create branch-a and change the file there
 ```
 git checkout -b branch-a
 echo "This is branch A" >> README.md
-git add .
+git add README.md
 git commit -m "Update from branch A"
 ```
 
-### Step 3
+What to expect: README.md now has two lines:
 ```
-git checkout main
+Hello World
+This is branch A
+```
+
+### Switch back to main and change the file differently
+```
+git checkout main   # or `master` if your repo uses that name
 echo "This is MAIN branch" >> README.md
-git add .
+git add README.md
 git commit -m "Update from main"
 ```
 
-### Step 4
+What to expect: On main the file has:
+```
+Hello World
+This is MAIN branch
+```
+
+### Merge branch-a
 ```
 git merge branch-a
 # Conflict will occur.
+git status
 ```
 
-### Step 5
+### Inspect the conflicted file
+Open README.md. You’ll see conflict markers:
 ```
-git add README.md
-git commit -m "Resolve conflict between main and branch-a"
+Hello World
+<<<<<<< HEAD
+This is MAIN branch
+=======
+This is branch A
+>>>>>>> branch-a
+```
+
+### Resolve the conflict manually
+Keep main version only:
+```
+Hello World
+This is MAIN branch
+```
+
+### Mark resolved and finish the merge
+```
+git add README.md     # mark as resolved
+git commit -m "Resolve conflict: merge branch-a into main"
+```
+
+## 18. Rename a local branch:
+```
+git branch -m juli-feature-branch juli-init
+```
+
+## 19. Reset to the remote version to drop them:
+```
+git reset --hard origin/development
+```
+
+## 20. See current branch:
+```
+git branch --show-current
+```
+
+## 21. Check remote URLs:
+```
+git remote -v
+```
+
+## 22. Delete a Remote Branch (after merge):
+```
+git push origin --delete feature-branch
 ```
