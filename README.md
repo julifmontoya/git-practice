@@ -160,40 +160,88 @@ git branch -d feature-branch
 ```
 
 ## 16. Merge Conflict Demo (Practice)
-### Step 1
+### Create a demo repo and initial commit
 ```
 mkdir git-conflict-demo
 cd git-conflict-demo
 git init
 echo "Hello World" > README.md
-git add .
+git add README.md
 git commit -m "Initial commit"
 ```
 
-### Step 2
+### Create branch-a and change the file there
 ```
 git checkout -b branch-a
 echo "This is branch A" >> README.md
-git add .
+git add README.md
 git commit -m "Update from branch A"
 ```
 
-### Step 3
+What to expect: README.md now has two lines:
 ```
-git checkout main
+Hello World
+This is branch A
+```
+
+### witch back to main and change the file differently
+```
+git checkout main   # or `master` if your repo uses that name
 echo "This is MAIN branch" >> README.md
-git add .
+git add README.md
 git commit -m "Update from main"
 ```
 
-### Step 4
+What to expect: On main the file has:
+```
+Hello World
+This is MAIN branch
+```
+
+### Merge branch-a
 ```
 git merge branch-a
 # Conflict will occur.
+git status
 ```
 
-### Step 5
+### Inspect the conflicted file
+Open README.md. You’ll see conflict markers:
 ```
-git add README.md
-git commit -m "Resolve conflict between main and branch-a"
+Hello World
+<<<<<<< HEAD
+This is MAIN branch
+=======
+This is branch A
+>>>>>>> branch-a
+```
+
+### Resolve the conflict manually
+Keep main version only:
+```
+Hello World
+This is MAIN branch
+```
+
+### Mark resolved and finish the merge
+```
+git add README.md     # mark as resolved
+git commit -m "Resolve conflict: merge branch-a into main"
+```
+
+## Rename a local branch:
+```
+git branch -m juli-feature-branch juli-init
+```
+
+## Sync development with remote (keeps it current):
+```
+git checkout development
+git fetch origin
+git pull origin development
+```
+
+## Reset to the remote version to drop them:
+```
+git reset --hard origin/development
 ```
